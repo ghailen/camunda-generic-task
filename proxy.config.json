@@ -1,0 +1,9 @@
+{
+  "/default/": {
+    "target": "http://localhost:8000/engine-rest/engine",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "info"
+  }
+}
+

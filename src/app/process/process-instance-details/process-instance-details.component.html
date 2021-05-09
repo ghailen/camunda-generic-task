@@ -1,0 +1,42 @@
+
+<br><br>
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      Liste des instances des processus
+    </div>
+    <div class="card-body">
+
+      <div class="table  table-striped  table-responsive">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover" aria-describedby="offer-table">
+          <thead class="thead-light">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Definition Id</th>
+            <th scope="col">Business Key</th>
+            <th scope="col">Case Instance Id</th>
+            <th scope="col">Ended</th>
+            <th scope="col">Suspended</th>
+            <th scope="col">Tenant Id</th>
+            <th scope="col">Action</th>
+          </tr>
+          </thead>
+          <tbody >
+          <tr *ngFor="let processData of processInstanceData">
+            <td>{{processData.id}}</td>
+            <td>{{processData.definitionId}}</td>
+            <td>{{processData.businessKey}}</td>
+            <td>{{processData.caseInstanceId}}</td>
+            <td>{{processData.ended}}</td>
+            <td>{{processData.suspended}}</td>
+            <td>{{processData.tenantId}}</td>
+            <td><input type="button" class="btn btn-primary" value="corriger" name="corriger" (click)="viewTask(processData.id)"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,79 @@
+
+<br><br>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      La Tâche active
+    </div>
+    <div class="card-body">
+
+      <div class="table  table-striped  table-responsive">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover" aria-describedby="offer-table">
+          <thead class="thead-light">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Created</th>
+            <th scope="col">Pocess Definition Id</th>
+            <th scope="col">Process Instance Id</th>
+            <th scope="col">Task Definition Key</th>
+            <th scope="col">Suspended</th>
+
+          </tr>
+          </thead>
+          <tbody >
+          <tr *ngFor="let task of taskData">
+            <td>{{task.id}}</td>
+            <td>{{task.name}}</td>
+            <td>{{task.created}}</td>
+            <td>{{task.processDefinitionId}}</td>
+            <td>{{task.processInstanceId}}</td>
+            <td>{{task.taskDefinitionKey}}</td>
+            <td>{{task.suspended}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
+  <br><br>
+
+  <div class="card">
+    <div class="card-header">Insertion des données des variables</div>
+    <div class="card-body">
+
+      <table datatable [dtOptions]="dtOptionsVariables" [dtTrigger]="dtTriggerVariables" class="row-border hover" >
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Value</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let fd of taskVariableList">
+          <td>{{fd.name}}</td>
+          <td>{{fd.content.type}}</td>
+          <td *ngIf="fd.content.type== 'String' || fd.content.type== 'Long' || fd.content.type== 'Double'" > <input type="text"  [(ngModel)]="fd.content.value"> </td>
+          <!--   <td *ngIf="fd.content.type== 'Boolean' && fd.content.value==null"> <input type="checkbox" value="false" checked=false (change)="selectedCheckbox($event)"></td>-->
+          <td *ngIf="fd.content.type== 'Boolean'"> <input type="checkbox" [value]="fd.name" [checked]="fd.content.value" (change)="selectedCheckbox($event)"></td>
+        </tr>
+        </tbody>
+
+      </table>
+      <input type="button" class="btn btn-primary" (click)="getData(taskVariableList)" value="validate">
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+
+
